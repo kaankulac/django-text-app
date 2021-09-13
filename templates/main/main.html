@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<link rel="stylesheet" href=" {%static 'css/mainpage.css'%}">
+
+{% if user.is_authenticated %}
+  <h2 name = 'abc'>Merhaba     {{user.first_name}}</h2>
+  &emsp;
+<div align="center">
+    <label for="texting">Ne düşünüyorsun?</label>
+
+</div>
+&emsp;
+
+<form action="{% url 'main' %}" method="POST">
+    {% csrf_token %}
+    <div class="text-area" align="center">
+    
+
+
+        <textarea class = "textarea" name="description" cols="90" rows="12" placeholder="Ne düşünüyorsun?"></textarea>
+        <div>
+            <button class="submit">Paylaş</button>
+    
+        </div>
+    
+    </div>
+</form>
+
+<div>
+    {%for post in postes%} 
+        <div class="post">
+            <h3 class="post">{{post.fromWho}} paylaştı...</h3>
+            <p class="post">{{post.description}}</p>
+            <p>{{post.created_date}}</p>
+            <br>
+        </div>
+    {%endfor%}
+</div>
+  
+{%else%}
+<p>  Giriş yapmadınız </p>
+
+{%endif%}
+
+
+
+
+
+
+
+{% endblock %}

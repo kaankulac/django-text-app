@@ -1,0 +1,45 @@
+{% load static %}
+<header>
+    {% if user.is_authenticated %}
+
+    <div class="header">
+        <a href="{% url 'main' %}"><img src="{% static 'img/logo.png' %}" alt="" width="40" height="40"></a>
+        &emsp;
+        &emsp;
+        &emsp;
+        
+        <a href="{% url 'main' %}" class="text">Ana Sayfa</a>
+        &emsp;
+        &emsp;
+        <a href="" class="text">Profil</a>
+        <div class="dropdown">
+            <button class="dropbtn"><img src="{% static 'img/settingsicon2.png' %}" alt="" width="40" height="40"></button>
+            <div class="dropdown-content">
+              <a href="#">Profil</a>
+              <a href="#">Ayarlar</a>
+              <a href="javascript:{document.getElementById('logout').submit()}">Çıkış Yap</a>
+              <form action="{% url 'logout' %}" method="POST" id="logout">
+                {%csrf_token%}
+                <input type="hidden" >
+            </form>
+            </div>
+          </div>
+        
+    
+    </div>
+  {%else%}
+    <div class="header">
+      <a href="{% url 'login' %}">Giriş Yap</a>
+      &emsp;
+      &emsp;
+      &emsp;
+
+      <a href="{% url 'register' %}">Kaydol</a>
+
+
+    
+  {%endif%}
+
+
+
+</header>

@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter</title>
+    <link rel="stylesheet" href=" {%static 'css/mainpage.css'%}">
+
+</head>
+<body>
+    {% if user.is_authenticated %}
+
+  <div class="area">
+      <div>
+          <ul>
+              <ul>
+                {% block content %}
+    
+
+                {% endblock %}
+              </ul>
+            
+          </ul>
+          
+    </div>
+    
+  </div>
+  <nav class="main-menu">
+            <ul>
+                <li>
+                    <a href="{% url 'main' %}">
+                        <i class="fa fa-home fa-2x"><img src="{% static 'img/editedlogo.png' %}" alt="" width="30" height="30"></i>
+                        <span class="nav-text">
+                             Ana Sayfa
+                        </span>
+                    </a>
+                  
+                </li>        
+        
+            </ul>
+
+            <ul class="logout">
+                <li>
+                    <a href="javascript:{document.getElementById('logout').submit()}">
+                    <form action="{% url 'logout' %}" method="POST" id="logout">
+                        {%csrf_token%}
+                        <input type="hidden">
+                    </form>
+                         <i class="fa fa-power-off fa-2x"><img src="{% static 'img/log-out.png' %}" alt="" width="30" height="30"></i>
+                        <span class="nav-text">
+                            Çıkış Yap                        </span>
+                    </a>
+                </li>  
+            </ul>
+        </nav>
+    
+    {%else%}
+    <div class="area">
+        <div>
+            <ul>
+                <ul>
+                  <p>Giriş yapmadınız</p>
+                </ul>
+              
+            </ul>
+            
+      </div>
+      
+    </div>
+    <nav class="main-menu">
+              <ul>
+                  <li>
+                      <a href="{% url 'login'%} ">
+                          <i class="fa fa-home fa-2x"><img src="{% static 'img/editedlogo.png' %}" alt="" width="30" height="30"></i>
+                          <span class="nav-text">
+                               Giriş Yap
+                          </span>
+                      </a>
+                    
+                  </li>
+                  <li class="has-subnav">
+                      <a href="{% url 'register'%}">
+                          <i class="fa fa-laptop fa-2x"><img src="{% static 'img/profile.png' %}" alt="" width="30" height="30"></i>
+                          <span class="nav-text">
+                              Kaydol
+                          </span>
+                      </a>
+                      
+                  </li>             
+          
+             
+          </nav>
+    {%endif%}
+
+
+
+        
+    
+</body>
+</html>

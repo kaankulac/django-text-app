@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter</title>
+    <link rel="stylesheet" href=" {%static 'css/main2.css'%}">
+</head>
+<body>
+
+    <main>
+        <div style="float:left;width:40%">
+            <img src="{% static 'img/twitter.gif'%}" alt="" width="588" height="900">
+        </div>
+        <div style="float:right;width:58%">
+            <form action="{% url 'register'%}" method="POST">
+                {% csrf_token %}
+                <div class="container"  >
+                    <img src="{% static 'img/whitelogo.png'%}" alt="" width="90" height="90">
+
+                  <h1>Kaydol</h1>
+                  <p>Hesap oluşturmak için aşağıdaki bilgileri doldurun...</p>
+                  <hr>
+                  <label for="ad"><b>Ad</b></label>
+                  <input type="text" placeholder="Ad" name="name" id="name" required>
+
+                  <label for="soyad"><b>Soyad</b></label>
+                  <input type="text" placeholder="Soyad" name="surname" id="surname" required>
+
+                  <label for="username"><b>Kullanıcı Adı</b></label>
+                  <input type="text" placeholder="Kullanıcı Adı" name="username" id="username" required>
+              
+                  <label for="email"><b>Email</b></label>
+                  <input type="text" placeholder="Email" name="email" id="email" required>
+                
+                  <label for="psw"><b>Şifre</b></label>
+                  <input type="password" placeholder="Şifre" name="password" id="password" required>
+              
+                  <label for="psw-repeat"><b>Şifre Tekrar</b></label>
+                  <input type="password" placeholder="Şifre Tekrar" name="psw-repeat" id="psw-repeat" required>
+                  <hr>
+              
+                  <p>Hesap oluşturarak bizim <a href="#">Şartlarımızı ve Gizlilik koşullarımızı </a>kabul etmiş olursunuz.</p>
+                  <button type="submit" class="registerbtn">Kaydol</button>
+                </div>
+              
+                <div class="container signin">
+                  <p>Zaten hesabınız var mı? <a href="{%url 'login'%}">Giriş Yap</a>.</p>
+                </div>
+              </form>
+        </div>
+        
+    </main>
+    
+</body>
+</html>
