@@ -1,1 +1,2 @@
-i used mysql database in this application but i can't push db files.
+-i used mysql database in this application.
+-its so basic text website i made for exercise.
